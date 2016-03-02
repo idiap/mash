@@ -1,0 +1,33 @@
+SET_EXPERIMENT_TYPE GoalPlanning
+
+USE_APPLICATION_SERVER 127.0.0.1 11200
+
+USE_GLOBAL_SEED 213545
+
+BEGIN_EXPERIMENT_SETUP
+    GOAL_NAME reach_1_flag
+    ENVIRONMENT_NAME SingleRoom
+    ROI_SIZE 127
+END_EXPERIMENT_SETUP
+
+USE_PREDICTOR unittests/benchmark
+
+BEGIN_PREDICTOR_SETUP
+    # How many actions to perform
+    NB_STEPS 1000
+
+    # The two actions that will be performed alternatively
+    ACTION1 2
+    ACTION2 3
+END_PREDICTOR_SETUP
+
+USE_HEURISTIC unittests/benchmark
+USE_HEURISTIC unittests/benchmark2
+USE_HEURISTIC unittests/benchmark3
+USE_HEURISTIC unittests/benchmark4
+USE_HEURISTIC unittests/benchmark5
+USE_HEURISTIC unittests/benchmark6
+USE_HEURISTIC unittests/benchmark7
+USE_HEURISTIC unittests/benchmark8
+USE_HEURISTIC unittests/benchmark9
+USE_HEURISTIC unittests/benchmark10

@@ -1,0 +1,2 @@
+# External libraries to link with the "classification-utils" goal-planning library
+mash-classification

@@ -1,0 +1,4 @@
+GO_NORTH: w
+GO_SOUTH: s
+GO_WEST: a
+GO_EAST: d

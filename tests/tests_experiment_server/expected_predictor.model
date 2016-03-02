@@ -1,0 +1,7 @@
+FORMAT 1.0
+PREDICTOR_SEED \d+
+HEURISTICS
+examples/identity/1 \d+
+examples/mean_threshold/1 \d+
+END_HEURISTICS
+OK

@@ -1,0 +1,7 @@
+# This file is included by CMakeLists.txt when the Experiments Server is installed
+
+set(MASH_SOURCE_DIR "${EXPERIMENT_SERVER_HEURISTIC_SOURCE_DIR}/../")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${MASH_SOURCE_DIR})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${MASH_SOURCE_DIR})
+
+SET(HEURISTICS_BUILD_DIR "heuristics" CACHE STRING "Directory in which the compiled heuristics must be located")

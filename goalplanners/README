@@ -1,0 +1,133 @@
+********************************************************************************
+*                                                                              *
+*                              MASH goal-planners                              *
+*                                                                              *
+********************************************************************************
+
+This folder contains all the goal-planners used by the project.
+
+This file contains some basic informations to let you get started with the
+implementation of a goal-planner. It is recommended to read the README file of
+the Framework too.
+
+
+________________________________________________________________________________
+
+Creation of a new goal-planner
+------------------------------
+
+To create a new goal-planner, it is recommended to use the 'create_planner.py'
+script from the MASH Framework:
+
+  (for this example, assume that the MASH Framework is in ~/mash, and that new
+  goal-planners will be created in ~/goalplanners)
+
+  ~/mash> ./scripts/create_planner.py --path=../goalplanners <USERNAME> <PLANNER_NAME>
+
+or
+
+  ~/mash> ./scripts/create_planner.py --path=../goalplanners --advanced <USERNAME> <PLANNER_NAME>
+
+(see below for an explanation about simple and advanced goal-planners).
+
+
+Like the heuristics, the name of a goal-planner (for the Framework) is:
+
+    <USERNAME>/<PLANNER_NAME>
+
+This is why each user MUST put its goal-planners in a folder with its name.
+
+NOTE: The folder and file names are lower-cased.
+
+
+________________________________________________________________________________
+
+Implementation of your goal-planner
+-----------------------------------
+
+The principle is similar to the implementation of a heuristic: you implement the
+missing methods of a class, in the source file created for you by the
+'create_planner.py' script (see the previous section).
+
+In a nutshell:
+ - A goal-planner implementation inherits from the 'Planner' interface (in
+   mash-goalplanning/planner.h)
+ - The system ask the goal-planner to learn whatever it want by using a task
+   object (of type 'ITask', declared in mash-goalplanning/task_interface.h)
+ - The task object allows the goal-planner to compute features (via its
+   perception of the problem, see 'IPerception', declared in
+   mash-goalplanning/perception_interface.h), and to update the state of the
+   task by performing actions
+ - Once the goal-planner has finished is learning phase, the system can also ask
+   it for the next action to perform given a certain perception
+
+All those files have detailed comments to help you, and there is more details on
+the wiki.
+
+
+________________________________________________________________________________
+
+Compilation of you goal-planners
+--------------------------------
+
+The goal-planners are compiled when you compile the MASH Framework.
+
+By default, the Framework look for goal-planners in 'mash/goalplanners' and
+'mash/../goalplanners' (with 'mash/' being the location of the Framework).
+You can change this behavior by modifying the variable MASH_GOALPLANNER_LOCATIONS
+when compiling the Framework (do ccmake .. instead of cmake ..).
+
+
+________________________________________________________________________________
+
+Simple vs. advanced goal-planners
+---------------------------------
+
+A simple goal-planner is implemented in only one source file. For example, the
+simple goal-planner 'example/simple' will be stored in the file
+'example/simple.cpp'.
+
+An advanced goal-planner is implemented in several source files. You can create
+one by giving the --advanced flag to the 'create_planner.py' script. For
+example, the advanced goal-planners 'example/advanced' will be stored in the
+folder 'example/advanced/'. All the source files in that folder will be compiled
+and linked together to form the goal-planner. By convention, the source file
+containing the implementation of the 'Planner' interface is called (in this
+example) 'example/advanced/advanced.cpp'
+
+
+________________________________________________________________________________
+
+Libraries
+---------
+
+If several of your goal-planners share the same piece of code, you can put it in
+a library (instead of copying it in each goal-planner).
+
+All the libraries are located in the folder 'libraries/'. Any goal-planner can use
+the classes and functions from any library.
+
+For example, let's take the following file hierarchy:
+
+  goalplanners/
+    johndoe/
+      advanced/
+        advanced.cpp
+        my_private_class.h
+        my_private_class.cpp
+      simple.cpp
+    libraries/
+      greatlibrary/
+        utils.h
+        utils.cpp
+
+Here the user 'johndoe' has one simple goal-planner (simple.cpp) and one advanced
+goal-planner (in advanced/). There is also a library called 'greatlibrary'
+available.
+
+Both goal-planners can use the library, by putting
+
+  #include <greatlibrary/utils.h>
+  
+in their source code (and that's it, nothing more to do), but only the advanced
+one has access to 'my_private_class.h'.

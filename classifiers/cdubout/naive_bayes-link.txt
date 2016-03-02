@@ -1,0 +1,2 @@
+# External libraries to link with the "naive_bayes" classifier
+classification-library-idiap-ml

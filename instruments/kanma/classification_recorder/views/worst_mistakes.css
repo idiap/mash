@@ -1,0 +1,48 @@
+div#kanma_classification_recorder_worst_mistakes p.explanation
+{
+    color: #555555;
+    font-family: Arial;
+    font-size: 14px;
+    font-style: italic;
+    margin-top: 0;
+    text-align: center;
+}
+
+
+div#kanma_classification_recorder_worst_mistakes div.label
+{
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+
+div#kanma_classification_recorder_worst_mistakes div.separator
+{
+    border-top: 1px solid #B6DE9F;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
+
+
+div#kanma_classification_recorder_worst_mistakes div.label p.label
+{
+    margin-top: 0px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+
+div#kanma_classification_recorder_worst_mistakes div.label p.section
+{
+    margin-top: 0px;
+    margin-left: 5px;
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+
+
+div#kanma_classification_recorder_worst_mistakes div.images
+{
+    text-align: center;
+}

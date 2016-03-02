@@ -1,0 +1,2 @@
+# External libraries to link with the "advanced" goal-planner
+goalplanning-library-random

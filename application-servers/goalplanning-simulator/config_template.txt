@@ -1,0 +1,5 @@
+# List of the available environments (hard-coded in the simulator)
+ENVIRONMENT 12x12_5_objects </path/to/the/dataset/>
+
+# List of the available recorded trajectories
+RECORDING <goal> <environment> </path/to/the/dataset/>

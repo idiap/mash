@@ -1,0 +1,1 @@
+COMMAND1 'This is a \'complicated\' and\nmultiline string argument'

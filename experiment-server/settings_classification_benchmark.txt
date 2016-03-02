@@ -1,0 +1,26 @@
+SET_EXPERIMENT_TYPE Classification
+
+USE_APPLICATION_SERVER 127.0.0.1 11000
+
+USE_GLOBAL_SEED 213545
+
+BEGIN_EXPERIMENT_SETUP
+    DATABASE_NAME caltech-256
+#    LABELS 0 1
+END_EXPERIMENT_SETUP
+
+USE_PREDICTOR unittests/benchmark
+
+BEGIN_PREDICTOR_SETUP
+END_PREDICTOR_SETUP
+
+USE_HEURISTIC unittests/benchmark
+USE_HEURISTIC unittests/benchmark2
+USE_HEURISTIC unittests/benchmark3
+USE_HEURISTIC unittests/benchmark4
+USE_HEURISTIC unittests/benchmark5
+USE_HEURISTIC unittests/benchmark6
+USE_HEURISTIC unittests/benchmark7
+USE_HEURISTIC unittests/benchmark8
+USE_HEURISTIC unittests/benchmark9
+USE_HEURISTIC unittests/benchmark10

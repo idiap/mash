@@ -1,0 +1,9 @@
+# This file is included by CMakeLists.txt when the Compilation Server is used in the
+# context of the source package (ie. when it is not installed)
+
+set(MASH_SOURCE_DIR "${COMPILATION_SERVER_HEURISTIC_SOURCE_DIR}/../../")
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${MASH_BIN_DIR}")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${MASH_BIN_DIR}")
+
+SET(HEURISTICS_BUILD_DIR "${MASH_BIN_DIR}/compilation_server_heuristics" CACHE STRING "Directory in which the compiled heuristics must be located")

@@ -1,0 +1,60 @@
+div#mash_featurelist_featurelist p.explanation
+{
+    color: #555555;
+    font-family: Arial;
+    font-size: 14px;
+    font-style: italic;
+    margin-top: 0;
+    text-align: center;
+}
+
+
+div#mash_featurelist_featurelist p.spacing
+{
+    margin-top: 10px;
+}
+
+
+div#mash_featurelist_featurelist table
+{
+    font-size: 13px;
+    border: 0;
+    border-spacing: 0;
+    margin-left: 20px;
+}
+
+
+div#mash_featurelist_featurelist td
+{
+    padding: 1px;
+}
+
+
+div#mash_featurelist_featurelist td.number
+{
+    padding-left: 20px;
+    padding-right: 0px;
+    text-align: right;
+    font-weight: bold;
+}
+
+
+div#mash_featurelist_featurelist td.total
+{
+    color: #444444;
+    padding-left: 1px;
+}
+
+
+div#mash_featurelist_featurelist a
+{
+    font-weight: bold;
+    color: #007000;
+    text-decoration: none;
+}
+
+
+div#mash_featurelist_featurelist a:hover
+{
+    text-decoration: underline;
+}

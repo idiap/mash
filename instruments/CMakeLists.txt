@@ -1,0 +1,5 @@
+instruments_read_list()
+instruments_detect()
+instruments_display()
+instruments_write_list()
+instruments_create_targets()

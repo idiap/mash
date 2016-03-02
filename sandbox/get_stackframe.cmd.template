@@ -1,0 +1,5 @@
+set print address 0
+frame $FRAME
+echo FRAME_START\n
+l
+echo FRAME_END\n

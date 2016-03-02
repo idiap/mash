@@ -1,0 +1,132 @@
+********************************************************************************
+*                                                                              *
+*                              MASH classifiers                                *
+*                                                                              *
+********************************************************************************
+
+This folder contains all the classifiers used by the project.
+
+This file contains some basic informations to let you get started with the
+implementation of a classifier. It is recommended to read the README file of the
+Framework too.
+
+
+________________________________________________________________________________
+
+Creation of a new classifier
+----------------------------
+
+To create a new classifier, it is recommended to use the 'create_classifier.py'
+script from the MASH Framework:
+
+  (for this example, assume that the MASH Framework is in ~/mash, and that new classifiers
+  will be created in ~/classifiers)
+
+  ~/mash> ./scripts/create_classifier.py --path=../classifiers <USERNAME> <CLASSIFIER_NAME>
+
+or
+
+  ~/mash> ./scripts/create_classifier.py --path=../classifiers --advanced <USERNAME> <CLASSIFIER_NAME>
+
+(see below for an explanation about simple and advanced classifiers).
+
+
+Like the heuristics, the name of a classifier (for the Framework) is:
+
+    <USERNAME>/<CLASSIFIER_NAME>
+
+This is why each user MUST put its classifiers in a folder with its name.
+
+NOTE: The folder and file names are lower-cased.
+
+
+________________________________________________________________________________
+
+Implementation of your classifier
+---------------------------------
+
+The principle is similar to the implementation of a heuristic: you implement the
+missing methods of a class, in the source file created for you by the
+'create_classifier.py' script (see the previous section).
+
+In a nutshell:
+ - A classifier implementation inherits from the 'Classifier' interface (in
+   mash-classification/classifier.h)
+ - The system ask the classifier to train itself by using an 'Input Set' object
+   (of type 'IClassifierInputSet', declared in
+   mash-classification/classifier_input_set_interface.h)
+ - The 'Input Set' object allows the classifier to compute features on a list of
+   labelled images
+ - Once the classifier has finished is training phase, the system will ask it to
+   do some classifications
+
+All those files have detailed comments to help you, and there is more details on
+the wiki.
+
+
+________________________________________________________________________________
+
+Compilation of your classifiers
+------------------------------
+
+The classifiers are compiled when you compile the MASH Framework.
+
+By default, the Framework look for classifiers in 'mash/classifiers' and
+'mash/../classifiers' (with 'mash/' being the location of the Framework).
+You can change this behavior by modifying the variable MASH_CLASSIFIER_LOCATIONS
+when compiling the Framework (do ccmake .. instead of cmake ..).
+
+
+________________________________________________________________________________
+
+Simple vs. advanced classifiers
+-------------------------------
+
+A simple classifier is implemented in only one source file. For example, the
+simple classifier 'example/simple' will be stored in the file
+'example/simple.cpp'.
+
+An advanced classifier is implemented in several source files. You can create
+one by giving the --advanced flag to the 'create_classifier.py' script. For
+example, the advanced classifier 'example/advanced' will be stored in the folder
+'example/advanced/'. All the source files in that folder will be compiled and
+linked together to form the classifier. By convention, the source file
+containing the implementation of the 'Classifier' interface is called (in this
+example) 'example/advanced/advanced.cpp'
+
+
+________________________________________________________________________________
+
+Libraries
+---------
+
+If several of your classifiers share the same piece of code, you can put it in
+a library (instead of copying it in each classifier).
+
+All the libraries are located in the folder 'libraries/'. Any classifier can use
+the classes and functions from any library.
+
+For example, let's take the following file hierarchy:
+
+  classifiers/
+    johndoe/
+      advanced/
+        advanced.cpp
+        my_private_class.h
+        my_private_class.cpp
+      simple.cpp
+    libraries/
+      greatlibrary/
+        utils.h
+        utils.cpp
+
+Here the user 'johndoe' has one simple classifier (simple.cpp) and one advanced
+classifier (in advanced/). There is also a library called 'greatlibrary'
+available.
+
+Both classifiers can use the library, by putting
+
+  #include <greatlibrary/utils.h>
+  
+in their source code (and that's it, nothing more to do), but only the advanced
+one has access to 'my_private_class.h'.

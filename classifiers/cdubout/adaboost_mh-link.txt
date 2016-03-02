@@ -1,0 +1,2 @@
+# External libraries to link with the "adaboost_mh" classifier
+classification-library-idiap-ml

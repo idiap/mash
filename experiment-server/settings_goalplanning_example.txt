@@ -1,0 +1,68 @@
+# Example of configuration file for the Experiments Server
+#
+# This configuration is designed for a goal-planning task
+
+# Tell the Experiment Server that this is a goal-planning task
+SET_EXPERIMENT_TYPE GoalPlanning
+
+# Indicates here the address and port of an Application Server useable for a
+# goal-planning task
+USE_APPLICATION_SERVER <address> <port>
+
+# Optional: set a global seed for the random number generators
+# USE_GLOBAL_SEED 213545
+
+# The task-specific parameters begin here
+BEGIN_EXPERIMENT_SETUP
+
+    # Indicates here the name of the goal to solve
+    GOAL_NAME <goal>
+
+    # Indicates here the name of the environment to use
+    ENVIRONMENT_NAME <environment>
+
+    # Size of the region-of-interest (default: the size of the smallest view)
+    ROI_SIZE <size>
+
+    # Size to which the views must be rescaled, in pixels (default: no scaling)
+    VIEWS_SIZE <size>
+
+    # Add any task-specific parameters you want here
+
+# We are done with the task-specific parameters
+END_EXPERIMENT_SETUP
+
+# Indicates here the instruments to use
+USE_INSTRUMENT <instrument>
+USE_INSTRUMENT <instrument>
+...
+
+# The instrument-specific parameters begin here (add one section per instrument you want to configure)
+BEGIN_INSTRUMENT_SETUP <instrument>
+
+    # Add whatever instrument-specific parameter you want here
+
+# We are done with the instrument-specific parameters
+END_INSTRUMENT_SETUP
+
+# Indicates here the name of the goal-planner to use
+USE_PREDICTOR <planner>
+
+# The goal-planner-specific parameters begin here
+BEGIN_PREDICTOR_SETUP
+
+    # Add whatever goal-planner-specific parameter you want here
+
+# We are done with the goal-planner-specific parameters
+END_PREDICTOR_SETUP
+
+# Indicates here the address of the GIT repository containing the heuristics.
+# You can also omit it if you pass the --no-compilation parameter to the
+# Experiment Server, in which case the server assumes that the heuristics are
+# already compiled.
+USE_HEURISTICS_REPOSITORY <address>
+
+# The heuristics you want to use
+USE_HEURISTIC <heuristic>
+USE_HEURISTIC <heuristic>
+...

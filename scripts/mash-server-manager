@@ -1,0 +1,21 @@
+#! /bin/bash
+
+case "$1" in
+    start)
+        echo -n "Starting MASH Server Manager... "
+        cd /local/server-manager
+        ./server-manager.py deamon &
+        echo "Done"
+        ;;
+
+    stop)
+        echo -n "Stopping MASH Server Manager ..."
+        pkill -f "./server-manager.py"
+        echo "Done"
+        ;;
+
+    *)
+        echo "Usage: $0 {start|stop}"
+        exit 1
+        ;;
+esac

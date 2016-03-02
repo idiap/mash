@@ -1,0 +1,2 @@
+# External libraries to link with the "dagger" goal-planner
+goalplanning-library-classification-utils

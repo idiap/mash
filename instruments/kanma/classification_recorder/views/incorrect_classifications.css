@@ -1,0 +1,33 @@
+div#kanma_classification_recorder_incorrect_classifications p.explanation
+{
+    color: #555555;
+    font-family: Arial;
+    font-size: 14px;
+    font-style: italic;
+    margin-top: 0;
+    text-align: center;
+}
+
+
+div#kanma_classification_recorder_incorrect_classifications a#help_link
+{
+    color: #007000;
+    display: block;
+    font-weight: bold;
+    font-size: 12px;
+    text-align: right;
+    text-decoration: none;
+}
+
+
+div#kanma_classification_recorder_incorrect_classifications a#help_link:hover
+{
+    text-decoration: underline;
+}
+
+
+div#kanma_classification_recorder_incorrect_classifications span
+{
+    font-family: Arial;
+    font-size: 14px;
+}
